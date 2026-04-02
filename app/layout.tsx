@@ -1,20 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./Providers"; // <-- Ye nayi line
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Magic Box - Your Emotional Companion",
-  description: "Tell us what's on your mind, and we'll become exactly who you need right now.",
+  title: "Magic Box AI",
+  description: "Your custom emotional companion",
 };
 
 export default function RootLayout({
@@ -23,11 +16,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en">
+      <body className={inter.className}>
+        {/* Niche wali line mein Providers add kiya hai */}
+        <Providers>{children}</Providers> 
+      </body>
     </html>
   );
 }
